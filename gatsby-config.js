@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Miriam Test Gatsby`,
+    description: `Testing out and learning Gatsby.`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -27,8 +27,41 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+        resolve: `gatsby-source-wordpress`,
+        options: {
+          baseUrl: `miriamgoldman.ca`,
+          protocol: `https`,
+          hostingWPCOM: false,
+          useACF: false,
+          auth: {
+          jwt_user: process.env.JWT_USER,
+          jwt_pass: process.env.JWT_PWD,
+          jwt_base_path: "/jwt-auth/v1/token",
+          },
+          acfOptionPageIds: [],
+          verboseOutput: false,
+          perPage: 100,
+          searchAndReplaceContentUrls: {
+            sourceUrl: "https://www.miriamgoldman.ca",
+            replacementUrl: "https://localhost:8000",
+          },
+          includedRoutes: [
+            "**/categories",
+            "**/posts",
+            "**/pages",
+            "**/media",
+            "**/tags",
+            "**/taxonomies",
+          ]
+        },
+    },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+          bucketName: 'miriam-gatsby-test-site',
+          acf: 'null'
+      },
+  },
   ],
 }
