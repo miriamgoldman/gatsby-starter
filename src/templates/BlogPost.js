@@ -14,7 +14,8 @@ const BlogPostTemplate = ({ data }) => (
     <p>
       Written on {data.wordpressPost.date}
     </p>
-    
+    <Img sizes={data.wordpressPost.featured_media.localFile.childImageSharp.sizes} alt={data.wordpressPost.title} style={{ maxHeight: 450 }} />
+
     <div
       style={{ marginTop: 20 }}
       dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
@@ -29,6 +30,26 @@ export const query = graphql`
       content
       excerpt
       date(formatString: "MMMM DD, YYYY")
+      featured_media {
+        localFile {
+          childImageSharp {
+            sizes(maxWidth: 1200) {
+              base64
+            tracedSVG
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
+            originalImg
+            originalName
+            presentationWidth
+            presentationHeight
+            }
+          }
+        }
+      }
     }
   }
 `

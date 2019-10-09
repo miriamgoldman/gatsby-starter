@@ -68,6 +68,5 @@ module.exports = {
           acf: 'null'
       },
   },
-  `gatsby-plugin-sitemap`,
   ],
 }

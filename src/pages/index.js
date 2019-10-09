@@ -11,7 +11,7 @@ const IndexPage = ({ data }) => (
       {data.allWordpressPost.edges.map(post => (
         <li style={{ padding: "20px 0", borderBottom: "1px solid #ccc" }}>
           <Link to={`/post/${post.node.slug}`} style={{ display: "flex", color: "black", textDecoration: "none" }} >
-            
+          <Img sizes={post.node.featured_media.localFile.childImageSharp.sizes} alt={post.node.title} style={{ width: "25%", marginRight: 20 }} />
             <div style={{ width: "75%" }}>
               <h3 dangerouslySetInnerHTML={{ __html: post.node.title }} style={{ marginBottom: 0 }} />
 
@@ -30,10 +30,30 @@ export const query = graphql`
     allWordpressPost {
       edges {
         node {
-          title
+          featured_media {
+            localFile {
+              childImageSharp {
+                sizes {
+                  aspectRatio
+                  base64
+                  originalImg
+                  originalName
+                  presentationHeight
+                  presentationWidth
+                  sizes
+                  src
+                  srcSet
+                  srcSetWebp
+                  srcWebp
+                  tracedSVG
+                }
+              }
+            }
+          }
           excerpt
-          slug
           date(formatString: "MMMM DD, YYYY")
+          title
+          slug
         }
       }
     }
