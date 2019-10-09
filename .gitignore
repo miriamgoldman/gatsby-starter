@@ -70,3 +70,4 @@ yarn-error.log
 awscli-bundle
 .env.development
 *.zip
+.env.production

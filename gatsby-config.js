@@ -59,7 +59,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-          bucketName: 'miriam-gatsby-test-site',
+          bucketName: process.env.AWS_S3,
           acf: 'null'
       },
   },
