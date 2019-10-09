@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
     title: `Miriam Test Gatsby`,
@@ -33,7 +36,7 @@ module.exports = {
           baseUrl: `miriamgoldman.ca`,
           protocol: `https`,
           hostingWPCOM: false,
-          useACF: false,
+          useACF: true,
           auth: {
           jwt_user: process.env.JWT_USER,
           jwt_pass: process.env.JWT_PWD,
@@ -53,15 +56,18 @@ module.exports = {
             "**/media",
             "**/tags",
             "**/taxonomies",
+            "**/wp-api-menus/v2/menus", // <== Menu api endpoint
+            "**/wp-api-menus/v2/locations", // <== Menu api endpoint
           ]
         },
     },
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-          bucketName: process.env.AWS_S3,
+          bucketName: process.env.AWS_BUCKETNAME,
           acf: 'null'
       },
   },
+  `gatsby-plugin-sitemap`,
   ],
 }

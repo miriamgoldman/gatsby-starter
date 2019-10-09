@@ -253,6 +253,7 @@ h2 {
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
   line-height: 1.1;
+  color:#FFF;
 }
 h3 {
   margin-left: 0;
@@ -619,4 +620,8 @@ pre tt:after {
   html {
     font-size: 100%;
   }
+}
+
+footer {
+  color:#FFF;
 }
