@@ -56,6 +56,7 @@ module.exports = {
             "**/media",
             "**/tags",
             "**/taxonomies",
+            "**/users",
             "**/wp-api-menus/v2/menus", // <== Menu api endpoint
             "**/wp-api-menus/v2/locations", // <== Menu api endpoint
           ]
